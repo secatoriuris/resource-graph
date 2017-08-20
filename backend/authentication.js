@@ -15,7 +15,7 @@ class Authentication {
     });
   }
   getClientSecret(){
-    return require('./client_secret.json');
+    return require('./../credentials/client_secret.json');
   }
   authorize(credentials) {
     var clientSecret = credentials.installed.client_secret;

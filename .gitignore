@@ -1,0 +1,14 @@
+# Node Modules are organized with npm
+node_modules
+package-lock.json
+build
+.babelrc
+
+# Ignore files that may contain sensitive information.
+credentials
+
+# ignore OSX-Storefiles
+.DS_Store
+
+# tools stay out of the repository
+tools
