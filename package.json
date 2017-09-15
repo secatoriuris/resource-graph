@@ -15,6 +15,7 @@
     "chart.js": "^2.6.0",
     "google-auth-library": "^0.10.0",
     "googleapis": "^20.1.0",
+    "node-redmine": "^0.2.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-google-sheet-connector": "^1.0.1"
