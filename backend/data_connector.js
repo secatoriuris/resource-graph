@@ -44,7 +44,7 @@ function getTotalHoursCollumn(currentWeek){
   for (var i=0;i<26;i++){
     if (currentWeek.values[4][i]==="Last") {
       console.log(i);
-      return i:
+      return i;
     }
     else {
       console.log("No Total found");
