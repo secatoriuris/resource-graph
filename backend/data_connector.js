@@ -5,7 +5,7 @@ var sheets = google.sheets('v4');
 var output = {projects: []};
 var weeklySheets = [];
 
-const spreadsheetId = '1wjjv3Qm9Eon2Zx47ELaWQKbXszM6RS8MOby0o0J03lQ';
+const spreadsheetId = '1Hh8M_eVT2BnR1do6rw063d_erZAhCiwuaIXmJJXp0VI';
 
 function getProjects(project, departments){
 

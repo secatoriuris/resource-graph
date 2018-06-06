@@ -10,7 +10,7 @@ class App extends React.Component {
 
 	constructor(props) {
 	    super(props);
-	    this.state = {selectedProject: "76808 LAV Relaunch"};
+	    this.state = {selectedProject: "76816 MTA Relaunch Online Shop"};
 	    this.getData = this.getData.bind(this);
 	    this.changeProject = this.changeProject.bind(this);
   	}
@@ -39,7 +39,7 @@ class App extends React.Component {
 
 	getData(){
 		var context = this;
-		axios.get('http://localhost:3000')
+		axios.get('http://sandboxtools.de:3000')
   		.then(function (response) {
 			context.setState(response.data);
 		  })

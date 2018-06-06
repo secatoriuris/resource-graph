@@ -18,8 +18,7 @@ module.exports={
 	},
 	output: {
 		filename: 'transformed.js',
-		path: __dirname + '/build',
-		publicPath: 'http://sandboxtools.de/'
+		path: __dirname + '/build'
 	},
 	plugins:[HTMLWebpackPluginConfig]
 };
