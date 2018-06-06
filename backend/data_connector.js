@@ -5,9 +5,9 @@ var sheets = google.sheets('v4');
 var output = {projects: []};
 var weeklySheets = [];
 
-const spreadsheetId = '1wjjv3Qm9Eon2Zx47ELaWQKbXszM6RS8MOby0o0J03lQ';
+const spreadsheetId = '1Hh8M_eVT2BnR1do6rw063d_erZAhCiwuaIXmJJXp0VI';
 
-function getProjects(project, departments){
+function getProjects(project, departments, totalHoursCollumn){
 
   var sumPm=0;
   var sumDes=0;
@@ -20,13 +20,13 @@ function getProjects(project, departments){
     if(departments[i]==="des"&& !isNaN(parseInt(project[i]))){sumDes+=parseInt(project[i]);};
   };
 
-  var sumDev = project[7] - sumPm - sumDes;
+  var sumDev = project[totalHoursCollumn] - sumPm - sumDes;
 
   return {
       kunde: project[0],
       jobnr: project[4],
       project: project[5],
-      stunden: project[7],
+      stunden: project[totalHoursCollumn],
       stundenPm: sumPm,
       stundenDes: sumDes,
       stundenDev: sumDev
@@ -38,6 +38,19 @@ function rowContainsProject(row){
     return false;
   }
   else return row[4];
+}
+
+function getTotalHoursCollumn(currentWeek){
+  for (var i=0;i<26;i++){
+    if (currentWeek.values[4][i]==="Last") {
+      console.log(i);
+      return i:
+    }
+    else {
+      console.log("No Total found");
+      return 7;
+    }
+  }
 }
 
 class DataConnector{
@@ -83,6 +96,10 @@ class DataConnector{
             for (var i = 0; i <response.valueRanges.length; i++) {
               var weeklyDepartmentCollumns=[];
               var currentDepartment = "nn";
+              var totalHoursCollumn = 7;
+
+              totalHoursCollumn = getTotalHoursCollumn(response.valueRanges[i]);
+
               for (var j = 0; j<response.valueRanges[i].values[0].length; j++){   
                 //build departments array
                 if(response.valueRanges[i].values[0][j]==="Beratung & Projektleitung"){currentDepartment="pm"};
@@ -95,7 +112,7 @@ class DataConnector{
                 if(rowContainsProject(response.valueRanges[i].values[k])){
                   output.projects.push({
                     week: JSON.stringify(response.valueRanges[i].range).slice(2,7), 
-                    projects: getProjects(response.valueRanges[i].values[k], weeklyDepartmentCollumns)
+                    projects: getProjects(response.valueRanges[i].values[k], weeklyDepartmentCollumns, totalHoursCollumn)
                   });
                 }
               }
