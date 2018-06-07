@@ -42,15 +42,12 @@ function rowContainsProject(row){
 
 function getTotalHoursCollumn(currentWeek){
   for (var i=0;i<26;i++){
-    if (currentWeek.values[4][i]==="Last") {
-      console.log(i);
+    var collumnHeadline = currentWeek.values[4][i];
+    if (collumnHeadline==="Last") {
       return i;
     }
-    else {
-      console.log("No Total found");
-      return 7;
-    }
   }
+  return 7;
 }
 
 class DataConnector{
